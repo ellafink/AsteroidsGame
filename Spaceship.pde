@@ -13,22 +13,22 @@ class Spaceship extends Floater
     yCorners[2] = 8;
     myXspeed = 0;
     myYspeed = 0;
-    myPointDirection = 90;
+    myPointDirection = 0;
     myCenterX = 300;
     myCenterY = 300;
     myColor = color(255,255,255);
   }
-  public double getmyCenterX(){return myCenterX;}
-  public double getmyCenterY(){return myCenterY;}
-  public double getmyXspeed(){return myXspeed;}
-  public double getmyYspeed(){return myYspeed;}
-  public double getmyPointDirection(){return myPointDirection;}
-  
-  public void setmyXspeed(double a){myXspeed = a;}
-  
+  public double getmyCenterX(){return (int)myCenterX;}
+  public double getmyCenterY(){return (int)myCenterY;}
+  public double getmyXspeed(){return (int)myXspeed;}
+  public double getmyYspeed(){return (int)myYspeed;}
+  public double getmyPointDirection(){return (int)myPointDirection;}
   public void hyperspace()
   {
-    bob.setmyXspeed(0);
-    bob.turn(Math.random()*360);
+    myXspeed = 0;
+    myYspeed = 0;
+    myCenterX = Math.random()*600;
+    myCenterY = Math.random()*600;
+    bob.turn(Math.random()*361);
   }
 }
