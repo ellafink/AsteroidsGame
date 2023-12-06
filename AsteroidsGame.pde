@@ -1,6 +1,7 @@
 Spaceship bob = new Spaceship();
 Star [] sky = new Star[200];
 ArrayList <Asteroid> rocks = new ArrayList <Asteroid>();
+ArrayList <Bullet> shots = new ArrayList <Bullet>();
 public void setup() 
   {
     size(600,600);
@@ -10,11 +11,13 @@ public void setup()
     for (int i = 0; i <= 8; i++){
       rocks.add(new Asteroid());
     }
+    for (int i = 0; i <= 8; i++){
+      shots.add(new Bullet(bob));
+    }
   }
 public void draw() 
   {
     background(0);
-    stroke(#F27FE7);
     text("myCenterX: " + (int)bob.getmyCenterX(), 2,10);
     text("myCenterY: " + (int)bob.getmyCenterY(), 2,20);
     text("myPointDirection: " + bob.getmyPointDirection(), 2,30);
@@ -33,6 +36,10 @@ public void draw()
       if(d<10)
         rocks.remove(i);
     }
+    for (int i = 0; i < shots.size(); i++){
+      shots.get(i).show();
+      shots.get(i).move();
+    }
   }
 public void keyPressed()
 {
@@ -44,4 +51,6 @@ public void keyPressed()
     bob.turn(10);
   if(key == ' ')
     bob.hyperspace();
+  if(key == 's')
+   shots.add(new Bullet(bob));
 }
