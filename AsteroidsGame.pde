@@ -8,7 +8,7 @@ public void setup()
     for (int i = 0; i < sky.length; i++){
       sky[i] = new Star();
     }
-    for (int i = 0; i <= 8; i++){
+    for (int i = 0; i <= 10; i++){
       rocks.add(new Asteroid());
     }
     for (int i = 0; i <= 8; i++){
@@ -39,6 +39,15 @@ public void draw()
     for (int i = 0; i < shots.size(); i++){
       shots.get(i).show();
       shots.get(i).move();
+    }
+    for (int i = 0; i < shots.size(); i++){
+      for(int h = 0; h < rocks.size(); h++){
+        float c = dist((float)shots.get(i).getX(), (float)shots.get(i).getY(), (float)rocks.get(h).getX(), (float)rocks.get(h).getY());
+        if(c<10){
+          rocks.remove(h);
+          shots.remove(i);
+        }
+      }
     }
   }
 public void keyPressed()
